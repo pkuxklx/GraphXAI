@@ -268,6 +268,7 @@ def make_structured_feature(y: torch.Tensor, n_features=5, n_informative=2,
         inorg = np.argwhere(Yorg == yval).flatten()
         #print('inorg', inorg)
 
+        # assert ingenerated.shape == inorg.shape, "Error due to flip_y > 0"
         for gen, org in zip(ingenerated, inorg): # Move 
             Xnew[org, :] = X[gen, :]
 

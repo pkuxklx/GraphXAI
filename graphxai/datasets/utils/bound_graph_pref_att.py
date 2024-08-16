@@ -151,7 +151,8 @@ def build_bound_graph(
     # Join subgraphs via inner-subgraph connections
     # for i in range(len(subgraphs)):
     #     for j in range(i + 1, len(subgraphs)):
-    for i, j in tqdm.tqdm(iter_edges):
+    verbose = False if 'verbose' not in kwargs.keys() else kwargs['verbose']
+    for i, j in tqdm.tqdm(iter_edges) if verbose else iter_edges:
 
         #s = subgraphs[i]
         # Try to make connections between subgraphs i, j:

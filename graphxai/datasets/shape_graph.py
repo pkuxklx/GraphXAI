@@ -242,6 +242,7 @@ class ShapeGGen(NodeDataset):
         gen_features, self.feature_imp_true = gaussian_lv_generator(
             self.G, self.yvals, seed = self.seed,
             n_features = self.n_features,
+            flip_y = 0, 
             class_sep = self.class_sep,
             n_informative = self.n_informative,
             n_clusters_per_class=self.n_clusters_per_class,
@@ -265,7 +266,7 @@ class ShapeGGen(NodeDataset):
                 torch.manual_seed(self.seed)
 
             if self.attribute_sensitive_feature:
-                print('Adding sensitive attr')
+                # print('Adding sensitive attr')
                 prob_change = (torch.rand((y.shape[0],)) < self.sens_attribution_noise)
                 sensitive = torch.where(prob_change, torch.logical_not(y.bool()).long(), y).float()
             else:
