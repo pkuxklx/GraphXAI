@@ -155,6 +155,7 @@ class ShapeGGen(NodeDataset):
             assert shape != 'random', 'Multiple shapes not yet supported for bounded graph'
 
         # Build graph:
+        assert (self.max_tries_verification <= 1) or (self.seed is None), "If you specify the seed, then no randomness in different tries."
 
         if self.verify and shape != 'random':
             for i in range(self.max_tries_verification):
